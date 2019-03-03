@@ -60,11 +60,15 @@ public class JsonReaderUtil {
             }catch(Exception ex){
 
             }
+
+            }
         }
         //Print to the console.
-        for(Employee entry:empList){
-            System.out.println(entry.getEmpEmail()+" "+entry.getEmpName()+" "+entry.getSalary()+" "+entry.getDepartment());
-        }
-    }
+//        for(Employee entry:empList){
+//            System.out.println(entry.getEmpEmail()+" "+entry.getEmpName()+" "+entry.getSalary()+" "+entry.getDepartment());
+//        }
+//    }
 
 }
+
+
