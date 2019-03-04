@@ -58,12 +58,20 @@ public class Numbers {
 		n = num.length;
 		randomize (num, n);
 
-		//shell sort
+		//Merge Sort
+		algo.selectionSort(num);
+		long mergeSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Bubble Sort take: " + mergeSortExecutionTime + " milli sec");
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "merge_sort", "SortingNumbers");
+		numbers = connectToSqlDB.readDataBase("merge_sort", "SortingNumbers");
+		printValue(numbers);
+		n = num.length;
+		randomize (num, n);
 
 
 
 
-		//Bubble Sort
+		//shell Sort
 		algo.selectionSort(num);
 		long shellSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of " + num.length + " numbers in Shell Sort take: " + shellSortExecutionTime + " milli sec");

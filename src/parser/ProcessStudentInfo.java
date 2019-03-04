@@ -59,12 +59,27 @@ public class ProcessStudentInfo {
 				seleniumStudents = xmlReader.parseData(tag, pathSelenium);
 
 				//Parse Data using parseData method and then store data into Qtp ArrayList.
+				seleniumStudents = xmlReader.parseData(tag, pathQtp);
 				
 				//add Selenium ArrayList data into map.
+				list.put("selenium", seleniumStudents);
 
 				//add Qtp ArrayList data into map.
 		
-		      	
+		      	list.put("qtp", qtpStudents);
+
+				for (Map.Entry<String, List<Student>> print : list.entrySet()) {
+					List<Student> studentList = (List<Student>) list.get(print.getKey());
+					System.out.println("\nPortfolio of Student of " + print.getKey() + "classes :\n");
+					for (Student studentprofile : studentList) {
+						String id = studentprofile.getId();
+						String firstname = studentprofile.getFirstName();
+						String lastname = studentprofile.getLastName();
+						String grade = studentprofile.getScore();
+						System.out.println("Students (id= " + id + ") " + firstname + " " + lastname + " grade= " + grade);
+					}
+				}
+
 				//Retrieve map data and display output.
 
 

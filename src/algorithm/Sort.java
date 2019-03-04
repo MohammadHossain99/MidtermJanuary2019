@@ -1,5 +1,5 @@
 package algorithm;
-
+import java.util.ArrayList;
 public class Sort {
 
     long executionTime = 0;
@@ -75,21 +75,36 @@ public class Sort {
         this.executionTime = executionTime;
         return list;
     }
-    
 
-    public int [] mergeSort(int [] array){
-        int [] list = array;
-        //implement here
+    public int [] mergeSort(int [] array) {
+        final long startTime = System.currentTimeMillis();
+        int[] list = array;
 
 
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
+
+//    public int [] mergeSort(int [] array){
+//        int [] list = array;
+
+    //        //implement here
+//
+//
+//        return list;
+//    }
     
 
     public int [] quickSort(int [] array){
         int [] list = array;
+        final long startTime = System.currentTimeMillis();
         //implement here
 
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
     
