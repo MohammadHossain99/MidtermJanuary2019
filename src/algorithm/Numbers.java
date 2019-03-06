@@ -22,7 +22,7 @@ public class Numbers {
 
 	public static void main(String[] args) throws Exception {
 		
-		int [] num = new int[1000];
+		int [] num = new int[10000];
 		storeRandomNumbers(num);
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
@@ -49,7 +49,7 @@ public class Numbers {
 		//By following above, Continue for rest of the Sorting Algorithm....
 
 		//Bubble Sort
-		algo.selectionSort(num);
+		algo.bubbleSort(num);
 		long bubbleSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of " + num.length + " numbers in Bubble Sort take: " + bubbleSortExecutionTime + " milli sec");
 		connectToSqlDB.insertDataFromArrayToSqlTable(num, "bubble_sort", "SortingNumbers");
@@ -61,18 +61,46 @@ public class Numbers {
 		//Merge Sort
 		algo.selectionSort(num);
 		long mergeSortExecutionTime = algo.executionTime;
-		System.out.println("Total Execution Time of " + num.length + " numbers in Bubble Sort take: " + mergeSortExecutionTime + " milli sec");
+		System.out.println("Total Execution Time of " + num.length + " numbers in Merge Sort take: " + mergeSortExecutionTime + " milli sec");
 		connectToSqlDB.insertDataFromArrayToSqlTable(num, "merge_sort", "SortingNumbers");
 		numbers = connectToSqlDB.readDataBase("merge_sort", "SortingNumbers");
 		printValue(numbers);
 		n = num.length;
 		randomize (num, n);
 
+		//Quick Sort
+		algo.selectionSort(num);
+		long quickSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Quick Sort take: " + quickSortExecutionTime + " milli sec");
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "quick_sort", "SortingNumbers");
+		numbers = connectToSqlDB.readDataBase("quick_sort", "SortingNumbers");
+		printValue(numbers);
+		n = num.length;
+		randomize (num, n);
 
+		// heap sort
+		algo.heapSort(num, 1000);
+		long heapSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Heap Sort take: " + heapSortExecutionTime + " milli sec");
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "heapSort_sort", "SortingNumbers");
+		numbers = connectToSqlDB.readDataBase("heapSort_sort", "SortingNumbers");
+		printValue(numbers);
+		n = num.length;
+		randomize (num, n);
+
+		//bucket sort
+		algo.bucketSort(num, 1000000 );
+		long bucketSorttExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Bucket Sort take: " + bucketSorttExecutionTime + " milli sec");
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "bucketSort_sort", "SortingNumbers");
+		numbers = connectToSqlDB.readDataBase("bucketSort_sort", "SortingNumbers");
+		printValue(numbers);
+		n = num.length;
+		randomize (num, n);
 
 
 		//shell Sort
-		algo.selectionSort(num);
+		algo.shellSort(num);
 		long shellSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of " + num.length + " numbers in Shell Sort take: " + shellSortExecutionTime + " milli sec");
 		connectToSqlDB.insertDataFromArrayToSqlTable(num, "shellSort_sort", "SortingNumbers");
@@ -83,10 +111,43 @@ public class Numbers {
 
 
 
+//		Come to conclusion about which Sorting Algo is better in given data set.
+//		for 1000 numbers, sort took:
+//		1. Selection sort: 3 milli sec
+//		2. Insertion sort: 3 milli sec
+//		3. Bubble sort: 5 milli sec
+//		4. Merge sort: 1 milli sec
+//		5. Quick sort: 0 milli sec
+//		6. Heap sort: 0 milli sec
+//		7. Bucket sort: 7 milli sec
+//		8. Shell sort: 0 milli sec
+
+		//		Come to conclusion about which Sorting Algo is better in given data set.
+//		for 10000 numbers, sort took:
+//		1. Selection sort: 48 milli sec
+//		2. Insertion sort: 16 milli sec
+//		3. Bubble sort: 201 milli sec
+//		4. Merge sort: 55 milli sec
+//		5. Quick sort: 28 milli sec
+//		6. Heap sort: 1 milli sec
+//		7. Bucket sort: 8 milli sec
+//		8. Shell sort: 4 milli sec
+
+		//Heap sort works the best.
 
 
-
-		//Come to conclusion about which Sorting Algo is better in given data set.
+////| Tables_in_pnt    |
+//				+------------------+
+//				| bubble_sort      |
+//				| bucketsort_sort  |
+//				| heapsort_sort    |
+//				| insertion_sort   |
+//				| merge_sort       |
+//				| quick_sort       |
+//				| selection_sort   |
+//				| shellsort_sort   |
+//				| tbl_lowestnumber |
+//				+------------------+
 
 	}
 
