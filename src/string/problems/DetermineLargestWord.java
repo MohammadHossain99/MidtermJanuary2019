@@ -10,17 +10,32 @@ public class DetermineLargestWord {
          Implement to Find the length and longest word in the given sentence below.
          Should return "10 biological".
          */
-        String s="Human brain is a biological learning machine";
-        Map<Integer, String> wordNLength = findTheLargestWord(s);
-        //implement
+        String s = "Human brain is a biological learning machine";
+        Map<Integer, String> wordNLength = findTheLargestWord( s );
+
+        int largestWord = 0;
+        String largeValue = "";
+        for (Map.Entry<Integer, String> wlength : wordNLength.entrySet()) {
+
+            if (largestWord < wlength.getKey()) {
+                largestWord = wlength.getKey();
+                largeValue = wlength.getValue();
+            }
+        }
+        System.out.println( largestWord + " " +largeValue);
 
     }
 
-    public static Map<Integer, String> findTheLargestWord(String wordGiven){
+    public static Map<Integer, String> findTheLargestWord(String wordGiven) {
         Map<Integer, String> map = new HashMap<Integer, String>();
         String st = "";
-        //implement
+
+        String[] word = wordGiven.split( " " );
+        for (int i = 0; i < word.length; i++) {
+            map.put( word[i].length(), word[i] );
+        }
 
         return map;
     }
-}
+    }
+

@@ -1,5 +1,13 @@
 package datastructure;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+
 public class DataReader {
 
 	public static void main(String[] args) {
@@ -18,8 +26,68 @@ public class DataReader {
 		 * Use For Each loop/while loop/Iterator to retrieve data.
 		 */
 
-		String textFile = System.getProperty("user.dir") + "/src/data/self-driving-car.txt";
+		//String textFile = System.getProperty("user.dir") + "/src/data/self-driving-car.txt";
 
+		FileReader fr = null;
+		BufferedReader br = null;
+		String string = "";
+		String data = "";
+
+		String textFile = "/Users/nehal/IdeaProjects/MidtermJanuary2019/src/data/self-driving-car";
+		try {
+
+
+			fr = new FileReader(textFile);
+			br = new BufferedReader(fr);
+
+			while ((string = br.readLine()) != null) {
+				data = data + string;
+				System.out.println(string);
+			}
+
+
+		} catch (FileNotFoundException e) {
+			e.getStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			if (fr != null) {
+				fr = null;
+			}
+			if (br != null) {
+				br = null;
+			}
+
+		}
+
+		String[] array = data.split( " " );
+		List<String> list = new LinkedList<String>();
+		Stack<String> storeStack = new Stack<String>();
+
+		for (String element : array) {
+			list.add( element );
+			storeStack.push( element );
+		}
+		System.out.println( "\nLinkedList FIFO:" );
+		Iterator<String> itr = list.iterator();
+		while (itr.hasNext()) {
+			System.out.print( itr.next() + " " );
+		}
+
+		System.out.println( "\n\nStack FILO:" );
+
+		while (!storeStack.isEmpty()) {
+			System.out.print( storeStack.pop() + " " );
+		}
+
+		System.out.println( storeStack.push( "\n\n" ) );
+		System.out.println( storeStack.search( "right" ) );
+
+		System.out.println( storeStack.peek() );
+
+
+		System.out.println( storeStack.empty() );
 
 
 	}

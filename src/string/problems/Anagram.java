@@ -67,5 +67,6 @@ import java.util.Scanner;
             System.out.println(s1+" and "+s2+" are not anagrams");
         }
     }
+
     }
 
